@@ -374,12 +374,26 @@ You can find the project at: https://github.com/domoritz/leaflet-locatecontrol
                 distance = (radius * 3.2808399).toFixed(0);
                 unit = this.options.strings.feetUnit;
             }
+            
+            // User profile image
+            var UserProfilePic = L.icon({
+                iconUrl: 'amrit.jpg',
+               // shadowUrl: 'leaf-shadow.png',
+
+                iconSize:     [60], // size of the icon
+                //shadowSize:   [50, 64], // size of the shadow
+                iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+                //shadowAnchor: [4, 62],  // the same for the shadow
+                popupAnchor:  [30, 0] // point from which the popup should open relative to the iconAnchor
+            });
+
 
             // small inner marker
             if (this.options.drawMarker) {
                 var mStyle = this._isFollowing() ? this.options.followMarkerStyle : this.options.markerStyle;
+                //debugger;
                 if (!this._marker) {
-                    this._marker = new this.options.markerClass(latlng, mStyle).addTo(this._layer);
+                    this._marker = new this.options.markerClass(latlng, {icon: UserProfilePic}).addTo(this._layer);
                 } else {
                     this._marker.setLatLng(latlng);
                     // If the markerClass can be updated with setStyle, update it.
